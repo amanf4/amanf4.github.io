@@ -41,9 +41,11 @@
 </head>
 <body>
   <img src="https://imgix.ranker.com/list_img_v2/8236/2768236/original/best-pink-characters?fit=crop&fm=pjpg&q=80&dpr=2&w=1200&h=720">
-  <p>Hi! I'm Aman Fatima, a 9th grader that goes to JGS. Say hello!</p>
+  <p>Hi! I'm Aman Fatima, a 9th grader that goes to JGS. Say hello!
+	  What's your favorite cake flavor?'</p>
   <input id="Name" placeholder="Name">
   <input id="Email" placeholder="Your email">
+  <input id="cake" placeholder="Your cake flavor?">
   <input id="submit" type="submit">
 </body>
 <script type="module">
@@ -69,17 +71,20 @@
   const db = getDatabase(app);
   const Name = document.querySelector("#Name") 
   const Email = document.querySelector("#Email")
+  const cake = document.querySelector("#cake")
   document.querySelector('#submit').addEventListener('click', Submit)
 function Submit() {
   const timestamp = buildTimestamp()
   
   set(ref(db, timestamp), {
 	  Name: Name.value,
-      email: Email.value,
+            email: Email.value,
+	  cake: cake.value,
   });
 
   Name.value = ""
   Email.value = ""
+  cake.value = ""
 }
 function buildTimestamp() {
   const now = new Date();
